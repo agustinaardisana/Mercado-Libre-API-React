@@ -1,0 +1,12 @@
+@import "../styles/base";
+
+header {
+  background-color: #fff159;
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    font-family: "Comfortaa", cursive;
+    color: #343b74;
+    font-weight: 700;
+  }
+}

@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.scss";
+import Header from "./components/Header";
+import ProductCard from "./components/ProductCard";
 
-function App() {
+const App = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch(`https://api.mercadolibre.com/sites/MLA/search?q=iphone`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(data.results);
+      });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Header />
+      <section>
+        <ProductCard products={products} />
+      </section>
+    </main>
   );
-}
+};
 
 export default App;

@@ -1,1 +1,11 @@
+@import "../styles/base";
 
+article {
+  margin: 5px;
+  .MuiCardContent-root {
+    height: 100px;
+    div {
+      float: right;
+    }
+  }
+}

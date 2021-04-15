@@ -1,4 +1,6 @@
 import "./Header.scss";
+import { useState } from "react";
+
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -12,17 +14,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+const Header = ({ handleSearch }) => {
   const classes = useStyles();
+  const [userInput, setUserInput] = useState("");
+
+  const handleChangeInput = (e) => {
+    setUserInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      handleSearch(e.target.value);
+    }
+  };
+
+  const handleClickHome = () => {
+    console.log("click"); //TRABAJANDO EN ESTO!!
+  };
 
   return (
     <header>
-      <h1>mercado libre</h1>
-      <form className={classes.root} noValidate autoComplete="off">
+      <h1 onClick={handleClickHome}>mercado libre</h1>
+      <form
+        className={classes.root}
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
         <TextField
           id="outlined-basic"
           label="Buscar productos, marcas y más..."
           variant="outlined"
+          type="text"
+          value={userInput}
+          onKeyDown={handleSubmit}
+          onChange={handleChangeInput}
         />
       </form>
     </header>

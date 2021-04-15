@@ -8,14 +8,15 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import LocalShippingIcon from "@material-ui/icons/LocalShipping";
+import LocalShippingOutlinedIcon from "@material-ui/icons/LocalShippingOutlined";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 284,
   },
   media: {
-    height: 140,
+    height: 284,
+    width: 284,
   },
 });
 
@@ -35,12 +36,13 @@ const ProductCard = ({ products }) => {
                   title="Contemplative Reptile"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h6" component="h3">
                     {product.title}
                   </Typography>
                   <div>
-                    {/* {product.shipping.free_shipping && LocalShippingIcon} */}
-                    {product.shipping.free_shipping && "free shipping"}
+                    {product.shipping.free_shipping && (
+                      <LocalShippingOutlinedIcon style={{ color: "#00a650" }} />
+                    )}
                   </div>
                   <Typography
                     variant="body2"

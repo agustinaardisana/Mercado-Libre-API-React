@@ -14,9 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ handleSearch }) => {
+const Header = ({ handleSearch, handleClickHome, userInput, setUserInput }) => {
   const classes = useStyles();
-  const [userInput, setUserInput] = useState("");
 
   const handleChangeInput = (e) => {
     setUserInput(e.target.value);
@@ -27,10 +26,6 @@ const Header = ({ handleSearch }) => {
       e.preventDefault();
       handleSearch(e.target.value);
     }
-  };
-
-  const handleClickHome = () => {
-    console.log("click"); //TRABAJANDO EN ESTO!!
   };
 
   return (

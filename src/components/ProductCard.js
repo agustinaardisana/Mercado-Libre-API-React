@@ -12,7 +12,8 @@ import LocalShippingOutlinedIcon from "@material-ui/icons/LocalShippingOutlined"
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 284,
+    width: 284,
+    height: 490,
   },
   media: {
     height: 284,
@@ -20,14 +21,20 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductCard = ({ products }) => {
+const ProductCard = ({ products, setView, setId }) => {
   const classes = useStyles();
+
+  const handleClickSeeMore = (e) => {
+    setView("productDescription");
+    console.log(e.target.parentNode.id);
+    setId(e.target.parentNode.id);
+  };
 
   return (
     <>
       {products.map((product) => {
         return (
-          <article key={product.id}>
+          <article key={product.id} id={product.id}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
@@ -54,7 +61,13 @@ const ProductCard = ({ products }) => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button
+                  size="medium"
+                  variant="contained"
+                  color="primary"
+                  onClick={handleClickSeeMore}
+                  id={product.id}
+                >
                   Ver Más
                 </Button>
               </CardActions>

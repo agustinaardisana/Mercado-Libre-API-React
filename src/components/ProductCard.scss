@@ -1,11 +1,14 @@
 @import "../styles/base";
 
 article {
-  margin: 5px;
+  margin: 10px;
   .MuiCardContent-root {
     height: 100px;
     div {
       float: right;
     }
+  }
+  .MuiCardActions-root {
+    justify-content: center;
   }
 }

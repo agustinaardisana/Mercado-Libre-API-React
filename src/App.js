@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import ProductCard from "./components/ProductCard";
+import Spinner from "./components/Spinner";
 import siteLogo from "./assets/logo_mercadolibre.png";
 import siteLogoResponsive from "./assets/logo_responsive.png";
 import ProductDescription from "./components/ProductDescription";
@@ -14,6 +15,7 @@ const App = () => {
   const [view, setView] = useState("home");
   const [id, setId] = useState("");
   const [description, setDescription] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const baseURL = `https://api.mercadolibre.com/`;
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const App = () => {
       .then((data) => {
         console.log(data);
         setProducts(data.results);
+        setIsLoading(false);
       });
   }, [search]);
 
@@ -37,6 +40,7 @@ const App = () => {
         setProductDetails(data);
         setSearch("");
         setUserInput("");
+        setIsLoading(false);
       });
   }, [id]);
 
@@ -52,12 +56,14 @@ const App = () => {
   const handleSearch = (userInput) => {
     setView("productsList");
     setSearch(userInput);
+    setIsLoading(true);
   };
 
   const handleClickHome = () => {
     setSearch("");
     setUserInput("");
     setView("home");
+    setIsLoading(true);
   };
 
   const handleClickSeeMore = (cardId) => {
@@ -74,6 +80,7 @@ const App = () => {
         setUserInput={setUserInput}
       />
       <section>
+        {isLoading && <Spinner />}
         {view === "home" && (
           <img
             src={window.innerWidth > 1100 ? siteLogo : siteLogoResponsive}

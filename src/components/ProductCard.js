@@ -21,14 +21,10 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductCard = ({ products, setView, setId }) => {
+const ProductCard = ({ products, handleClickSeeMore }) => {
   const classes = useStyles();
 
-  const handleClickSeeMore = (e) => {
-    setView("productDescription");
-    console.log(e.target.parentNode.id);
-    setId(e.target.parentNode.id);
-  };
+  const handleClick = (e) => handleClickSeeMore(e.target.parentNode.id);
 
   return (
     <>
@@ -65,7 +61,7 @@ const ProductCard = ({ products, setView, setId }) => {
                   size="medium"
                   variant="contained"
                   color="primary"
-                  onClick={handleClickSeeMore}
+                  onClick={handleClick}
                   id={product.id}
                 >
                   Ver Más

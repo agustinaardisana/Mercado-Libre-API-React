@@ -1,10 +1,16 @@
 section {
   display: flex;
   flex-wrap: wrap;
-  margin: 50px;
+  padding: 50px;
   justify-content: center;
   align-items: center;
-
+  background-color: #f7f7f7;
+  @media (max-width: 900px) {
+    display: block;
+    img {
+      position: unset;
+    }
+  }
   img {
     position: absolute;
     top: 40%;

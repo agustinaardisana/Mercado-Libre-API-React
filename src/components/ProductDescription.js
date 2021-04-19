@@ -1,17 +1,28 @@
 import "./ProductDescription.scss";
+import React from "react";
+import BuyButton from "./BuyButton";
 
-const ProductDescription = ({ products }) => {
+const ProductDescription = ({ productDetails, description }) => {
   return (
-    <div>
-      <p>
-        {products.condition} - {products.sold_quantity} vendidos
-      </p>
-      <h3>{products.title}</h3>
-      <img src={products.pictures[0].url}></img>
-      <p>${products.base_price}</p>
-      <a href={products.permalink}>
-        <button>Comprar</button>
-      </a>
+    <div className="product--description__container">
+      <div className="container--description">
+        <img
+          src={productDetails.pictures[0].url || productDetails.thumbnail}
+        ></img>
+        <div>
+          <h3>Descripción</h3>
+          <p>{description}</p>
+        </div>
+      </div>
+      <div className="container--info">
+        <p className="condition--tag">
+          {productDetails.condition === "new" ? "Nuevo" : "Usado"} |{" "}
+          {productDetails.sold_quantity} vendidos
+        </p>
+        <h2>{productDetails.title}</h2>
+        <p className="price--tag">${productDetails.base_price}</p>
+        <BuyButton href={productDetails.permalink} />
+      </div>
     </div>
   );
 };

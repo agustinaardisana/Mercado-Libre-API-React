@@ -1,5 +1,4 @@
 import "./Header.scss";
-import { useState } from "react";
 
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,7 +21,7 @@ const Header = ({ handleSearch, handleClickHome, userInput, setUserInput }) => {
   };
 
   const handleSubmit = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       e.preventDefault();
       handleSearch(e.target.value);
     }

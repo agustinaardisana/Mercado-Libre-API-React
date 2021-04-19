@@ -5,10 +5,19 @@ header {
   background-color: #fff159;
   display: flex;
   justify-content: space-between;
+
   h1 {
     font-family: "Comfortaa", cursive;
     color: #343b74;
     font-weight: 700;
     cursor: pointer;
+  }
+
+  form {
+    div {
+      @media (max-width: 900px) {
+        max-width: 300px;
+      }
+    }
   }
 }

@@ -1,0 +1,38 @@
+.product--description__container {
+  display: flex;
+  max-width: 85%;
+  height: 100%;
+  background-color: #fff;
+  margin: 10px;
+  padding: 5px;
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .container--description {
+    padding: 15px;
+    width: 60%;
+    img {
+      position: unset;
+    }
+  }
+
+  .container--info {
+    width: 40%;
+    padding: 10px 30px;
+
+    .condition--tag {
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .price--tag {
+      font-size: 36px;
+      font-weight: 100;
+    }
+  }
+}

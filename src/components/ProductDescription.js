@@ -3,12 +3,11 @@ import React from "react";
 import BuyButton from "./BuyButton";
 
 const ProductDescription = ({ productDetails, description }) => {
+  const img = productDetails.pictures && productDetails.pictures[0].url;
   return (
     <div className="product--description__container">
       <div className="container--description">
-        <img
-          src={productDetails.pictures[0].url || productDetails.thumbnail}
-        ></img>
+        <img src={img || productDetails.thumbnail}></img>
         <div>
           <h3>Descripción</h3>
           <p>{description}</p>

@@ -1,3 +1,4 @@
+import CheckboxFilter from "./CheckboxFilter";
 import "./Filters.scss";
 
 const Filters = () => {
@@ -7,15 +8,16 @@ const Filters = () => {
       <div className="filters--container">
         <h3>CATEGORÍA</h3>
         <label for="free-shipping__filter">
-          <input
+          {/* <input
             // class="filtro-categoria"
             type="checkbox"
             name="categoria-consolas"
             id="free-shipping__filter"
             value="free_shipping"
           />
-          Envío Gratis
+          Envío Gratis */}
         </label>
+        <CheckboxFilter value={"free_shipping"} label={"Envío Gratis"} />
       </div>
     </aside>
   );
